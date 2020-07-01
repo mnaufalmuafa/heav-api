@@ -11,6 +11,5 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
+$router->post('/transaction','TransactionController@create');
+$router->get('/transaction/{id}','TransactionController@get');
