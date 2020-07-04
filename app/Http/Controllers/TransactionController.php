@@ -29,4 +29,15 @@ class TransactionController extends Controller
         $transaction = Transaction::find($id);
         return response()->json($transaction);
     }
+
+    public function pay(Request $request)
+    {
+        $this->validate($request, [
+            "paymentCode" => 'required|integer',
+            "paymentId" => 'required|integer',
+        ]);
+        Transaction::where('paymentId', $request->paymentId)
+                        ->where('paymentCode', $request->paymentCode)
+                        ->update(["status" => "success"]);
+    }
 }

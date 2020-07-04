@@ -13,3 +13,4 @@
 
 $router->post('/transaction','TransactionController@create');
 $router->get('/transaction/{id}','TransactionController@get');
+$router->post('pay_transaction', 'TransactionController@pay');
